@@ -2,20 +2,101 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Title</title>
-<!--   <meta name="description" content="">
-  <meta name="author" content=""> -->
-  <link rel="stylesheet" href="">
+  <title>Books Page</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+
+  <link rel="stylesheet" href="/stylesheets/bootstrap.css">
 </head>
 <body>
-  <h1>All my books!</h1>
-  <a href="/books/new">Add a new Book</a>
-  <% allBooks.forEach(function(book){ %>
-  <p><%= book.title %> by <%= book.author %></p>
-  <form action="/books/<%= book.id %>?_method=delete" method="post">
-  	<input type="submit" value="Delete">
-  </form>
-  <a href="/books/<%= book.id %>/edit">Edit</a>
-  <% }); %>
+
+<%if(allBooks.length === 0) {%>
+   <div class="navbar navbar-inverse navbar-top" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+              <a class="navbar-brand" href="/">Library</a>
+            </div>
+            <div class="navbar-collapse collapse" style="height: 1px;">
+              <ul class = "nav navbar-nav navbar-right">
+                <li class="active"><a href="/">Home</a></li>
+                <li><a href="/books">Books</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+              </ul>
+            </div>
+          </div>
+  </div>
+
+
+  <div class="container">
+      <h2>Sorry, there are no Books in your current directory.</h2>
+      <p class="lead">Would you like to add a Book?</p>
+      <br>
+      <a class="btn btn-primary btn-lg" role="button" href="/books/new">Create New »</a>
+  </div>
+  <br>
+
+<%} else { %>
+  <div class="navbar navbar-inverse navbar-top" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+              <a class="navbar-brand" href="/">Library</a>
+            </div>
+            <div class="navbar-collapse collapse" style="height: 1px;">
+              <ul class = "nav navbar-nav navbar-right">
+                <li><a href="/">Home</a></li>
+                <li class="active"><a href="/books">Books</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+              </ul>
+            </div>
+          </div>
+  </div>
+
+  <div class="container">
+    <h1>All my books!</h1>
+    <br>
+    <a class="btn btn-primary btn-md" role="button" href="/books/new">Add a Book »</a>
+    <br>
+    <br>
+      <% allBooks.forEach(function(book){ %>
+        <div class="container">
+          <h3><a href="/books/<%= book.id %>"><%= book.title %></a> 
+          by <%= book.author %></h3>
+          <form action="/books/<%= book.id %>?_method=delete" method="post">
+          	<button type="submit" class="btn btn-danger pull-right">Delete</button>
+          </form>
+          <a class="btn btn-primary pull-right" role="button" href="/books/<%= book.id %>/edit">Edit »</a>
+        </div>
+          <hr>
+          <br>
+    <% }); %>
+  </div>
+<%}%>
+
+   <footer>
+        <p>© Ryan's Awesome 2014</p>
+  </footer>
+  <br>
+
 </body>
 </html>

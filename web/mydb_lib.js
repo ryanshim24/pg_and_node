@@ -1,6 +1,6 @@
 "use strict"
 
-var pg = require('pg');
+var pg = require('pg');//nodemodule
 
 function DB(database, port, host) {
   this.config = {
@@ -10,19 +10,19 @@ function DB(database, port, host) {
   };
 }
 
-DB.prototype.connect = function(buzzer){
-  pg.connect(this.config, function(err, client, done){
+DB.prototype.connect = function(buzzer){ //Function that takes in anotehr function (POst Gress)
+  pg.connect(this.config, function(err, client, done){//Database management
       if (err) {
            console.error("OOOPS!!! SOMETHING WENT WRONG!", err);
       }
-      buzzer(client);
+      buzzer(client);//connect
       done();
   });
 };
 
-DB.prototype.query = function(statement, params, anotherBuzzer){
+DB.prototype.query = function(statement, params, callback){
   this.connect(function(client){
-    client.query(statement, params, anotherBuzzer);
+    client.query(statement, params, callback);
   });
 };
 
