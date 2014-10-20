@@ -9,14 +9,16 @@
 
 .intro-header {
   padding-top: 50px;
-  padding-bottom: 250px;
+  padding-bottom: 200px;
   text-align: center;
   color: #f8f8f8;
   background: url('http://startbootstrap.com/templates/landing-page/img/intro-bg.jpg') no-repeat center center;
   background-size: cover;
 }
 
-
+.intro-message {
+  padding-top: 50px;
+}
 footer {
   bottom: 0;
   text-align: center;
