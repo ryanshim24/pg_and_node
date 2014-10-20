@@ -28,16 +28,13 @@ app.get('/books', function(req, res){ //Route to books route
 
 //New
 app.get('/books/new', function(req, res){
-  //DONE
 	res.render("library/new");
 });
 
 //Create
 app.post('/books', function(req, res) {
-	//TODO
   var title = req.body.book.title; //Grabs data from the input
   var author = req.body.book.author; //Grabs data from the input
-  // console.log("/books -> Implement me.");
   library.add(title,author,function(){ //Pushing that data into the library.add method
     res.redirect('/books'); 
   });
@@ -64,8 +61,6 @@ app.put('/books/:id', function(req, res) {
 	var id = req.params.id;
   var title = req.body.book.title;
   var author = req.body.book.author;
-  //TODO
-  // library.update ...
   library.update(id,title,author, function(){
     res.redirect('/books');
   });
@@ -74,12 +69,14 @@ app.put('/books/:id', function(req, res) {
 //Delete
 app.delete('/books/:id', function(req, res) {
 	var id = req.params.id;
-  //TODO
   library.destroy(id,function(){
     res.redirect('/books');
   });
 });
 
+
+
+//Static Information
 app.get('/about', function(req,res) { //My about page
   res.render('library/about');
 });
