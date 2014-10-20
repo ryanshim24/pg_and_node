@@ -16,6 +16,10 @@
   background-size: cover;
 }
 
+.intro-message {
+  padding-bottom:
+}
+
 footer {
   bottom: 0;
   text-align: center;
@@ -30,6 +34,36 @@ ul { /* Resets given margins and padding */
   margin: 0;
   padding: 0;
   list-style-type: none; /* Removes bullet points */
+}
+
+.results li {
+  border-bottom: 1px solid #CCCCCC;
+  clear: both;
+  padding: 24px;
+}
+
+.info {
+  float: left;
+  font-size: 22px;
+  color: #4A4A4A;
+}
+
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.cf {
+    *zoom: 1;
 }
 
 .img-responsive, .thumbnail>img, .thumbnail a>img, .carousel-inner>.item>img, .carousel-inner>.item>a>img {

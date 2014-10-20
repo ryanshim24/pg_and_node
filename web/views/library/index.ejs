@@ -72,31 +72,31 @@
           </div>
   </div>
 
-  <div class="container">
+  <div class="results container">
     <h1>All my books!</h1>
     <br>
     <a class="btn btn-primary btn-md" role="button" href="/books/new">Add a Book »</a>
     <br>
     <br>
-      <% allBooks.forEach(function(book){ %>
-        <div class="container">
-          <h3><a href="/books/<%= book.id %>"><%= book.title %></a> 
-          by <%= book.author %></h3>
-          <form action="/books/<%= book.id %>?_method=delete" method="post">
-          	<button type="submit" class="btn btn-danger pull-right">Delete</button>
-          </form>
-          <a class="btn btn-primary pull-right" role="button" href="/books/<%= book.id %>/edit">Edit »</a>
-        </div>
-          <hr>
-          <br>
-    <% }); %>
+      <ul>
+        <% allBooks.forEach(function(book){ %>
+          <li class="cf">
+            <div class="info "><a href="/books/<%= book.id %>"><%= book.title %></a> 
+            by <%= book.author %></div>
+            <form action="/books/<%= book.id %>?_method=delete" method="post">
+            	<button type="submit" class="btn btn-danger pull-right">Delete</button>
+            </form>
+            <a class="btn btn-primary pull-right" role="button" href="/books/<%= book.id %>/edit">Edit »</a>
+          </li>
+        <% }); %>
+      </ul>
   </div>
-<%}%>
-
-   <footer>
-        <p>© Ryan's Awesome 2014</p>
-  </footer>
+<%}%>  
   <br>
+
+    <footer>
+        © Ryan's Awesome 2014
+    </footer>
 
 </body>
 </html>

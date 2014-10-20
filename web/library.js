@@ -31,9 +31,10 @@ Library.prototype.all = function(callback) {
 };
 
 Library.prototype.add = function(title, author, callback) {
-	var newBook = new Book(title,author);
+	var newBook = new Book(title,author); //Made a new book from the input data we pushed from the app.post
 	// TODO
 	// db.query... INSERT
+	//Statement, paramaters, callback
 	db.query("INSERT INTO books (title,author) VALUES ($1, $2) RETURNING *",
 		[newBook.title,newBook.author ], function(err, resultSet){
 			if (err) console.log("INSERT FAILED", err);
@@ -43,7 +44,7 @@ Library.prototype.add = function(title, author, callback) {
 };
 
 Library.prototype.destroy = function(id, callback) {
-	// TODO
+	// Query 
 	db.query("DELETE FROM books WHERE id = $1",[id],function(err, resultSet){
 		if (err) console.log("Delete failed", err);
 		console.log("This is result set:", resultSet);

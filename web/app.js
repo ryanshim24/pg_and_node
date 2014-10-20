@@ -21,7 +21,7 @@ app.get('/', function(req, res){ //Routing to route route
 //Index
 app.get('/books', function(req, res){ //Route to books route
   //DONE!
-    library.all(function(leBooks){
+    library.all(function(leBooks){ //Using the library.all method
     res.render('library/index', {allBooks: leBooks});
   });
 });
@@ -35,10 +35,10 @@ app.get('/books/new', function(req, res){
 //Create
 app.post('/books', function(req, res) {
 	//TODO
-  var title = req.body.book.title;
-  var author = req.body.book.author;
+  var title = req.body.book.title; //Grabs data from the input
+  var author = req.body.book.author; //Grabs data from the input
   // console.log("/books -> Implement me.");
-  library.add(title,author,function(){
+  library.add(title,author,function(){ //Pushing that data into the library.add method
     res.redirect('/books'); 
   });
 });
